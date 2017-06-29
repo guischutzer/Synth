@@ -1,9 +1,9 @@
-#N canvas 0 122 1307 865 10;
+#N canvas 0 164 1307 865 10;
 #X obj 408 145 cnv 15 210 150 empty empty Controle 20 12 0 14 -204800
 -66577 0;
 #X obj 224 263 cnv 15 600 150 empty empty Síntese 20 12 0 14 -262130
 -66577 0;
-#N canvas 619 297 576 646 Abre_MIDI 0;
+#N canvas 616 311 576 646 Abre_MIDI 0;
 #X obj 82 2 bng 15 250 50 0 empty empty empty 17 7 0 10 -4034 -1 -1
 ;
 #X obj 249 129 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -35,7 +35,7 @@
 #X connect 9 0 1 0;
 #X connect 12 0 9 0;
 #X coords 0 -1 1 1 50 40 1 80 0;
-#X restore 426 208 pd Abre_MIDI;
+#X restore 433 204 pd Abre_MIDI;
 #N canvas 358 280 788 447 Ouve_MIDI 0;
 #X obj 47 196 notein;
 #X obj 47 326 outlet;
@@ -61,8 +61,8 @@
 #X connect 7 0 9 0;
 #X connect 8 0 2 1;
 #X coords 0 -1 1 1 19 19 1 100 100;
-#X restore 520 215 pd Ouve_MIDI;
-#N canvas 555 200 839 546 ctrl_to_synth 0;
+#X restore 520 216 pd Ouve_MIDI;
+#N canvas 552 214 839 546 ctrl_to_synth 0;
 #X obj 100 100 cnv 15 19 19 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X obj 178 101 inlet;
@@ -82,8 +82,19 @@
 #X connect 8 0 7 0;
 #X coords 0 -1 1 1 19 19 2 100 100;
 #X restore 503 253 pd ctrl_to_synth;
-#X obj 431 180 hsl 163 15 0 1 0 0 volume empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+#X obj 224 414 cnv 15 600 150 empty empty Envelopamento 20 12 0 14
+-261682 -66577 0;
+#X obj 224 564 cnv 15 600 150 empty empty Efeitos 20 12 0 14 -232576
+-66577 0;
+#N canvas 1115 404 450 300 volume_slider 0;
+#X obj 105 102 hsl 155 15 0 1 0 0 volume v_slider empty -2 -8 0 10
+-204786 -1 -1 7700 1;
+#X msg 117 159 \; v_slider 0.5;
+#X obj 53 159 loadbang;
+#X text 113 100 Volume;
+#X connect 2 0 1 0;
+#X coords 0 -1 1 1 164 19 1 100 100;
+#X restore 434 175 pd volume_slider;
 #X connect 2 0 4 0;
 #X connect 3 0 4 0;
 #X coords 0 865 1 864 85 60 0;
