@@ -95,6 +95,16 @@
 #X connect 2 0 1 0;
 #X coords 0 -1 1 1 164 19 1 100 100;
 #X restore 434 175 pd volume_slider;
+#N canvas 561 373 599 391 VCO 0;
+#X obj 102 102 vradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X text 137 131 Dentada;
+#X text 133 146 Quadrada;
+#X text 143 161 Pulso;
+#X text 137 99 Senoide;
+#X text 129 115 Triangular;
+#X coords 0 -1 1 1 100 80 2 100 100;
+#X restore 264 304 pd VCO;
 #X connect 2 0 4 0;
 #X connect 3 0 4 0;
 #X coords 0 865 1 864 85 60 0;
