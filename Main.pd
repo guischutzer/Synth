@@ -1,9 +1,9 @@
-#N canvas 0 164 1307 865 10;
-#X obj 408 145 cnv 15 210 150 empty empty Controle 20 12 0 14 -204800
+#N canvas 24 166 1307 865 10;
+#X obj 407 141 cnv 15 210 150 empty empty Controle 20 12 0 14 -204800
 -66577 0;
 #X obj 224 263 cnv 15 600 150 empty empty Síntese 20 12 0 14 -262130
 -66577 0;
-#N canvas 616 311 576 646 Abre_MIDI 0;
+#N canvas 612 313 576 646 Abre_MIDI 0;
 #X obj 82 2 bng 15 250 50 0 empty empty empty 17 7 0 10 -4034 -1 -1
 ;
 #X obj 249 129 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -35,8 +35,8 @@
 #X connect 9 0 1 0;
 #X connect 12 0 9 0;
 #X coords 0 -1 1 1 50 40 1 80 0;
-#X restore 433 204 pd Abre_MIDI;
-#N canvas 358 280 788 447 Ouve_MIDI 0;
+#X restore 432 200 pd Abre_MIDI;
+#N canvas 354 282 788 447 Ouve_MIDI 0;
 #X obj 47 196 notein;
 #X obj 47 326 outlet;
 #X obj 47 298 spigot;
@@ -61,8 +61,8 @@
 #X connect 7 0 9 0;
 #X connect 8 0 2 1;
 #X coords 0 -1 1 1 19 19 1 100 100;
-#X restore 520 216 pd Ouve_MIDI;
-#N canvas 552 214 839 546 ctrl_to_synth 0;
+#X restore 519 212 pd Ouve_MIDI;
+#N canvas 546 217 839 546 ctrl_to_synth 0;
 #X obj 100 100 cnv 15 19 19 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X obj 178 101 inlet;
@@ -81,7 +81,7 @@
 #X connect 7 0 2 0;
 #X connect 8 0 7 0;
 #X coords 0 -1 1 1 19 19 2 100 100;
-#X restore 503 253 pd ctrl_to_synth;
+#X restore 505 245 pd ctrl_to_synth;
 #X obj 224 414 cnv 15 600 150 empty empty Envelopamento 20 12 0 14
 -261682 -66577 0;
 #X obj 224 564 cnv 15 600 150 empty empty Efeitos 20 12 0 14 -232576
@@ -94,17 +94,126 @@
 #X text 113 100 Volume;
 #X connect 2 0 1 0;
 #X coords 0 -1 1 1 164 19 1 100 100;
-#X restore 434 175 pd volume_slider;
-#N canvas 561 373 599 391 VCO 0;
-#X obj 102 102 vradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144
--1 -1 0;
-#X text 137 131 Dentada;
-#X text 133 146 Quadrada;
-#X text 143 161 Pulso;
-#X text 137 99 Senoide;
-#X text 129 115 Triangular;
+#X restore 433 171 pd volume_slider;
+#N canvas 644 406 599 391 VCO 0;
+#X obj 101 101 cnv 15 98 78 empty vco_b empty 20 12 0 14 -262131 -262144
+0;
+#X obj 103 102 vradio 15 1 0 5 empty empty empty 0 -8 0 10 -262130
+-260097 -1 0;
+#X text 138 131 Dentada;
+#X text 134 146 Quadrada;
+#X text 144 161 Pulso;
+#X text 138 99 Senoide;
+#X text 130 115 Triangular;
+#X obj 398 35 inlet;
 #X coords 0 -1 1 1 100 80 2 100 100;
 #X restore 264 304 pd VCO;
+#N canvas 918 137 889 893 synth_selector 0;
+#X obj 100 101 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262130
+-260097 -1 0;
+#X obj 385 242 demux 1 2 3 4;
+#N canvas 1 54 1905 997 select_synth 0;
+#X obj 377 276 route 0 1 2;
+#X obj 196 406 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 316 406 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 316 450 \; vco_b color 5;
+#X obj 377 310 s sb1;
+#X obj 414 310 s sb2;
+#X obj 451 310 s sb3;
+#X obj 488 310 s sb4;
+#X obj 196 370 r sb1;
+#X obj 276 370 r sb2;
+#X obj 316 370 r sb3;
+#X obj 357 370 r sb4;
+#X obj 445 402 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 565 402 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 565 366 r sb3;
+#X obj 606 366 r sb4;
+#X obj 200 630 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 320 630 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 280 594 r sb2;
+#X obj 361 594 r sb4;
+#X obj 445 630 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 565 630 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 565 594 r sb3;
+#X obj 606 594 r sb4;
+#X obj 377 238 inlet;
+#X obj 445 366 r sb2;
+#X obj 525 366 r sb1;
+#X obj 200 594 r sb3;
+#X obj 320 594 r sb1;
+#X obj 445 594 r sb4;
+#X obj 525 594 r sb1;
+#X msg 445 447 \; 2_b color 104;
+#X msg 565 446 \; 2_b color 5;
+#X msg 200 675 \; 3_b color 104;
+#X msg 320 674 \; 3_b color 5;
+#X msg 445 675 \; 4_b color 104;
+#X msg 565 674 \; 4_b color 5;
+#X msg 196 451 \; vco_b color 104;
+#X obj 241 521 outlet;
+#X obj 594 749 outlet;
+#X obj 371 521 outlet;
+#X obj 468 741 outlet;
+#X msg 231 422 1;
+#X msg 268 423 0;
+#X msg 480 424 1;
+#X msg 517 425 0;
+#X connect 0 0 4 0;
+#X connect 0 1 5 0;
+#X connect 0 2 6 0;
+#X connect 0 3 7 0;
+#X connect 1 0 37 0;
+#X connect 1 0 42 0;
+#X connect 2 0 3 0;
+#X connect 2 0 43 0;
+#X connect 8 0 1 0;
+#X connect 9 0 2 0;
+#X connect 10 0 2 0;
+#X connect 11 0 2 0;
+#X connect 12 0 31 0;
+#X connect 12 0 44 0;
+#X connect 13 0 32 0;
+#X connect 13 0 45 0;
+#X connect 14 0 13 0;
+#X connect 15 0 13 0;
+#X connect 16 0 33 0;
+#X connect 17 0 34 0;
+#X connect 17 0 41 0;
+#X connect 18 0 17 0;
+#X connect 19 0 17 0;
+#X connect 20 0 35 0;
+#X connect 21 0 36 0;
+#X connect 21 0 39 0;
+#X connect 22 0 21 0;
+#X connect 23 0 21 0;
+#X connect 24 0 0 0;
+#X connect 25 0 12 0;
+#X connect 26 0 13 0;
+#X connect 27 0 16 0;
+#X connect 28 0 17 0;
+#X connect 29 0 20 0;
+#X connect 30 0 21 0;
+#X connect 42 0 38 0;
+#X connect 43 0 38 0;
+#X connect 44 0 40 0;
+#X connect 45 0 40 0;
+#X restore 107 239 pd select_synth;
+#X obj 385 117 inlet;
+#X obj 262 308 route;
+#X connect 0 0 1 1;
+#X connect 0 0 2 0;
+#X connect 3 0 1 0;
+#X coords 0 -1 1 1 60 17 2 100 100;
+#X restore 485 261 pd synth_selector;
 #X connect 2 0 4 0;
 #X connect 3 0 4 0;
 #X coords 0 865 1 864 85 60 0;
