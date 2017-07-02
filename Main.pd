@@ -1,4 +1,4 @@
-#N canvas 580 123 1267 865 10;
+#N canvas -47 60 850 865 10;
 #X obj 256 61 cnv 15 540 200 empty empty Controle 20 12 0 14 -204800
 -66577 0;
 #X obj 224 263 cnv 15 600 150 empty empty Síntese 20 12 0 14 -262130
@@ -97,13 +97,13 @@
 #X connect 8 0 9 0;
 #X coords 0 -1 1 1 19 19 2 100 100;
 #X restore 508 249 pd ctrl_to_synth;
-#X obj 224 414 cnv 15 600 150 empty empty Envelopamento 20 12 0 14
--261682 -66577 0;
-#X obj 224 564 cnv 15 600 150 empty empty Efeitos 20 12 0 14 -232576
+#X obj 224 414 cnv 15 600 250 empty empty Envelopamento 20 12 0 14
+-261234 -66577 0;
+#X obj 223 615 cnv 15 600 150 empty empty Efeitos 20 12 0 14 -232576
 -66577 0;
 #N canvas 1103 435 450 300 volume_slider 0;
 #X obj 105 102 hsl 191 15 0.01 1 0 0 volume v_slider empty -2 -8 0
-10 -204786 -1 -1 9004 1;
+10 -204786 -1 -1 16304 1;
 #X msg 117 159 \; v_slider 0.5;
 #X obj 53 159 loadbang;
 #X text 105 102 Volume;
@@ -118,8 +118,8 @@
 #X text 138 131 Dentada;
 #X text 134 146 Quadrada;
 #X text 144 161 Pulso;
-#X text 138 99 Senoide;
-#X text 130 115 Triangular;
+#X text 138 100 Senoide;
+#X text 125 115 Triangular;
 #X obj 280 103 inlet;
 #X obj 230 346 phasor~ 0;
 #X obj 280 148 unpack;
@@ -426,7 +426,7 @@
 #X obj 178 239 outlet~;
 #X connect 0 0 1 0;
 #X coords 0 -1 1 1 19 19 2 100 100;
-#X restore 507 554 pd env_fx;
+#X restore 507 615 pd env_fx;
 #N canvas 203 293 807 483 toca 0;
 #X obj 212 74 inlet~;
 #X obj 251 141 r volume;
@@ -465,14 +465,14 @@
 #X text 748 202 1024;
 #X text 748 217 2048;
 #X obj 730 142 vradio 15 1 0 6 b_size b_init empty 0 -8 0 10 -262144
--1 -1 5;
+-1 -1 4;
 #X obj 512 93 cnv 15 200 140 empty empty empty 20 12 0 14 -262144 -66577
 0;
 #X text 747 172 256;
 #X text 747 157 128;
 #X text 241 300 VCO;
 #N canvas 1 68 1389 657 env_selector 1;
-#X obj 100 101 hradio 15 1 0 2 empty empty empty 0 -8 0 10 -261682
+#X obj 100 101 hradio 15 1 0 2 empty empty empty 0 -8 0 10 -261234
 -258113 -1 0;
 #X floatatom 999 517 5 0 0 0 - - -, f 5;
 #X obj 627 541 outlet;
@@ -481,41 +481,43 @@
 #X obj 530 539 outlet~;
 #X obj 739 152 cyclone/peakamp~;
 #X obj 782 103 bang~;
-#X obj 901 154 r freq;
-#N canvas 1 71 851 605 select_env 0;
+#X obj 907 154 r freq;
+#N canvas 441 396 868 605 select_env 0;
 #X obj 196 406 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 393 406 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 515 402 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 579 402 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 705 402 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 725 402 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 377 238 inlet;
 #X obj 367 494 outlet;
-#X obj 678 498 outlet;
+#X obj 698 498 outlet;
 #X msg 367 429 0;
-#X msg 678 425 0;
+#X msg 698 425 0;
 #X obj 152 330 loadbang;
 #X obj 377 310 s eb1;
 #X obj 417 309 s eb2;
 #X obj 377 276 route 0;
-#X obj 515 366 r eb2;
-#X obj 708 369 r eb1;
+#X obj 579 366 r eb2;
+#X obj 728 369 r eb1;
 #X obj 392 373 r eb2;
 #X obj 196 370 r eb1;
-#X msg 515 447 \; 2_b color 13;
-#X msg 705 446 \; 2_b color 4;
+#X msg 579 450 \; 2_b color 13;
+#X msg 725 446 \; 2_b color 4;
 #X msg 196 451 \; adsr_b color 13;
-#X msg 393 450 \; adsr_b color 4;
 #X msg 325 429 1;
-#X msg 637 426 1;
+#X msg 657 426 1;
+#X obj 215 119 cnv 15 100 60 empty teste empty 20 12 0 14 -261234 -66577
+0;
+#X msg 393 450 \; adsr_b color -1.67628e+007;
 #X connect 0 0 19 0;
-#X connect 0 0 21 0;
-#X connect 1 0 20 0;
+#X connect 0 0 20 0;
+#X connect 1 0 23 0;
 #X connect 1 0 7 0;
 #X connect 2 0 17 0;
-#X connect 2 0 22 0;
+#X connect 2 0 21 0;
 #X connect 3 0 18 0;
 #X connect 3 0 8 0;
 #X connect 4 0 12 0;
@@ -528,8 +530,8 @@
 #X connect 14 0 3 0;
 #X connect 15 0 1 0;
 #X connect 16 0 0 0;
-#X connect 21 0 5 0;
-#X connect 22 0 6 0;
+#X connect 20 0 5 0;
+#X connect 21 0 6 0;
 #X restore 627 393 pd select_env;
 #X obj 882 392 zexy/demultiplex 1 2;
 #X floatatom 627 511 5 0 0 0 - - -, f 5;
@@ -540,30 +542,30 @@
 #X obj 198 398 spigot;
 #X obj 199 438 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 153 241 r vel;
+#X obj 160 241 r vel;
 #X floatatom 160 287 5 0 0 0 - - -, f 5;
 #X floatatom 139 366 5 0 0 0 - - -, f 5;
 #X obj 139 399 spigot;
 #X obj 130 434 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 139 330 > 1e-05;
-#X obj 215 336 <= 1e-05;
-#X obj 130 507 s note_on;
+#X obj 130 508 s note_on;
 #X obj 199 508 s note_off;
 #X obj 530 502 *~;
 #X obj 852 515 *~;
 #X obj 852 537 outlet~;
+#X obj 139 330 > 0;
+#X obj 215 336 <= 0;
 #X connect 0 0 9 0;
 #X connect 1 0 3 0;
 #X connect 4 0 6 0;
-#X connect 4 0 27 0;
-#X connect 4 0 28 0;
+#X connect 4 0 25 0;
+#X connect 4 0 26 0;
 #X connect 6 0 12 0;
 #X connect 7 0 6 0;
 #X connect 8 0 12 1;
 #X connect 9 0 11 0;
-#X connect 9 0 27 1;
-#X connect 9 0 28 1;
+#X connect 9 0 25 1;
+#X connect 9 0 26 1;
 #X connect 9 1 1 0;
 #X connect 10 0 2 0;
 #X connect 10 1 1 0;
@@ -574,53 +576,48 @@
 #X connect 15 0 16 1;
 #X connect 15 0 16 0;
 #X connect 16 0 17 0;
-#X connect 17 0 26 0;
+#X connect 17 0 24 0;
 #X connect 18 0 19 0;
-#X connect 19 0 23 0;
-#X connect 19 0 24 0;
+#X connect 19 0 28 0;
+#X connect 19 0 29 0;
 #X connect 20 0 21 1;
 #X connect 20 0 21 0;
 #X connect 21 0 22 0;
-#X connect 22 0 25 0;
-#X connect 23 0 20 0;
-#X connect 24 0 15 0;
-#X connect 27 0 5 0;
-#X connect 28 0 29 0;
+#X connect 22 0 23 0;
+#X connect 25 0 5 0;
+#X connect 26 0 27 0;
+#X connect 28 0 20 0;
+#X connect 29 0 15 0;
 #X coords 0 -1 1 1 30 17 2 100 100;
-#X restore 500 409 pd env_selector;
-#N canvas 92 359 1063 576 adsr 0;
-#X obj 101 101 cnv 15 108 98 empty adsr_b empty 20 12 0 14 -258699
+#X restore 505 407 pd env_selector;
+#N canvas 820 82 1063 771 adsr 0;
+#X obj 101 101 cnv 15 258 148 empty adsr_b empty 20 12 0 14 -258699
 -66577 0;
-#X obj 311 82 r trigger;
-#X obj 360 186 r graphit;
-#X msg 643 85 bang;
-#X text 687 86 <-- attack and delayed release;
-#X obj 654 109 del 500;
-#X text 758 192 <-- attack only;
-#X msg 643 173 \; pd dsp 1 \; trigger 1 \; graphit bang;
-#X text 759 269 <-- release only;
-#X msg 642 243 \; pd dsp 1 \; trigger 0 \; graphit bang;
-#X msg 654 134 \; trigger 0;
-#X obj 414 366 outlet~;
-#X obj 105 120 cnv 15 100 70 empty empty empty 20 12 0 14 -262144 -66577
+#X obj 171 265 r trigger;
+#X obj 220 369 r graphit;
+#X msg 652 226 bang;
+#X text 696 227 <-- attack and delayed release;
+#X obj 663 250 del 500;
+#X text 767 333 <-- attack only;
+#X msg 652 314 \; pd dsp 1 \; trigger 1 \; graphit bang;
+#X text 768 410 <-- release only;
+#X msg 651 384 \; pd dsp 1 \; trigger 0 \; graphit bang;
+#X msg 663 275 \; trigger 0;
+#X obj 183 509 outlet~;
+#X obj 105 127 cnv 15 120 90 empty empty empty 20 12 0 14 -262144 -66577
 0;
 #N canvas 1 56 450 300 (subpatch) 0;
 #X array adsr-format 44100 float 0;
-#X coords 0 1.02 44100 -1.02 100 70 1 0 0;
-#X restore 105 120 graph;
-#X obj 570 173 r note_on;
-#X obj 322 274 *~;
-#X obj 545 280 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X coords 0 1.02 44100 -1.02 120 90 1 0 0;
+#X restore 105 127 graph;
+#X obj 615 128 r note_on;
+#X obj 182 457 *~;
+#X obj 554 421 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X floatatom 328 113 5 0 0 0 - - -, f 5;
-#X obj 246 80 inlet~;
-#X msg 468 84 200;
-#X msg 508 82 50;
-#X msg 546 82 300;
-#X obj 473 36 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 387 37 loadbang;
-#N canvas 1 54 1905 997 sub_adsr 0;
+#X floatatom 188 296 5 0 0 0 - - -, f 5;
+#X obj 106 263 inlet~;
+#X obj 283 -11 loadbang;
+#N canvas 1 54 804 997 sub_adsr 1;
 #X obj 105 111 inlet;
 #X obj 435 151 inlet;
 #X text 101 86 trigger;
@@ -688,6 +685,9 @@ then attack (instead of attacking from the current location).;
 #X text 208 1 Arguments: level \, attack time \, decay time \, sustain
 level \, release time. A \, D \, and R are in msec and S is in percent.
 This patch is used as an abstraction in various examples.;
+#X obj 476 193 * 1000;
+#X obj 557 193 * 1000;
+#X obj 672 195 * 1000;
 #X connect 0 0 3 0;
 #X connect 1 0 5 1;
 #X connect 1 0 18 1;
@@ -698,15 +698,14 @@ This patch is used as an abstraction in various examples.;
 #X connect 4 0 8 0;
 #X connect 5 0 6 0;
 #X connect 6 0 9 0;
-#X connect 7 0 6 1;
-#X connect 7 0 8 1;
+#X connect 7 0 60 0;
 #X connect 8 0 10 0;
 #X connect 9 0 19 0;
 #X connect 10 0 31 0;
 #X connect 11 0 9 0;
-#X connect 12 0 11 1;
+#X connect 12 0 61 0;
 #X connect 13 0 10 1;
-#X connect 14 0 16 1;
+#X connect 14 0 62 0;
 #X connect 15 0 8 0;
 #X connect 16 0 9 0;
 #X connect 18 0 11 0;
@@ -716,42 +715,80 @@ This patch is used as an abstraction in various examples.;
 #X connect 40 0 4 0;
 #X connect 40 1 41 0;
 #X connect 41 0 9 0;
-#X restore 322 161 pd sub_adsr;
-#X obj 566 246 r note_off;
-#X obj 571 281 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X connect 60 0 8 1;
+#X connect 60 0 6 1;
+#X connect 61 0 11 1;
+#X connect 62 0 16 1;
+#X restore 182 344 pd sub_adsr;
+#X obj 575 387 r note_off;
+#X obj 580 422 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 338 211 tabwrite~ adsr-format;
-#X msg 395 82 1;
-#X msg 429 84 100;
-#X connect 1 0 24 0;
+#X obj 198 394 tabwrite~ adsr-format;
+#X obj 266 117 vsl 15 110 0 1 0 0 decay empty D 0 -9 0 10 -261234 -1
+-1 1400 1;
+#X obj 246 233 nbx 3 14 0 4 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 0.12844 256;
+#X msg 301 42 50;
+#X obj 402 267 r sustain;
+#X obj 232 117 vsl 15 110 0 1 0 0 att empty A 0 -9 0 10 -261234 -1
+-1 1090 1;
+#X obj 338 117 vsl 15 110 0 1 0 0 release empty R 0 -9 0 10 -261234
+-1 -1 2370 1;
+#X obj 301 117 vsl 15 110 0 100 0 0 sustain empty S_% 0 -9 0 10 -204786
+-1 -1 10900 1;
+#X obj 322 233 nbx 3 14 0 4 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 0.217431 256;
+#X obj 208 233 nbx 3 14 0 4 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 0.1 256;
+#X obj 284 233 nbx 3 14 0 100 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 100 256;
+#X obj 293 266 r att;
+#X obj 340 266 r decay;
+#X obj 479 268 r release;
+#X msg 232 42 0.1;
+#X msg 266 42 0.2;
+#X msg 338 42 0.3;
+#X obj 411 -9 inlet;
+#X obj 411 38 unpack;
+#X obj 411 75 s peak;
+#X obj 242 265 r peak;
+#X connect 1 0 20 0;
 #X connect 1 0 17 0;
-#X connect 2 0 27 0;
+#X connect 2 0 23 0;
 #X connect 3 0 7 0;
 #X connect 3 0 5 0;
 #X connect 5 0 10 0;
 #X connect 14 0 16 0;
-#X connect 14 0 3 0;
+#X connect 14 0 7 0;
 #X connect 15 0 11 0;
 #X connect 18 0 15 1;
-#X connect 19 0 24 3;
-#X connect 20 0 24 4;
-#X connect 21 0 24 5;
-#X connect 22 0 29 0;
-#X connect 22 0 28 0;
-#X connect 22 0 20 0;
-#X connect 22 0 19 0;
-#X connect 22 0 21 0;
-#X connect 23 0 22 0;
-#X connect 24 0 15 0;
-#X connect 24 0 27 0;
-#X connect 25 0 9 0;
-#X connect 25 0 26 0;
-#X connect 28 0 24 1;
-#X connect 29 0 24 2;
-#X coords 0 -1 1 1 110 100 1 100 100;
-#X restore 337 445 pd adsr;
+#X connect 19 0 26 0;
+#X connect 19 0 38 0;
+#X connect 19 0 37 0;
+#X connect 19 0 39 0;
+#X connect 20 0 15 0;
+#X connect 20 0 23 0;
+#X connect 21 0 9 0;
+#X connect 21 0 22 0;
+#X connect 24 0 25 0;
+#X connect 26 0 30 0;
+#X connect 27 0 20 4;
+#X connect 28 0 32 0;
+#X connect 29 0 31 0;
+#X connect 30 0 33 0;
+#X connect 34 0 20 2;
+#X connect 35 0 20 3;
+#X connect 36 0 20 5;
+#X connect 37 0 28 0;
+#X connect 38 0 24 0;
+#X connect 39 0 29 0;
+#X connect 40 0 41 0;
+#X connect 41 0 42 0;
+#X connect 43 0 20 1;
+#X coords 0 -1 1 1 260 150 1 100 100;
+#X restore 244 444 pd adsr;
 #N canvas 1 72 450 300 (subpatch) 0;
-#X array onda 2048 float 1;
+#X array onda 1024 float 1;
 #A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -782,43 +819,12 @@ This patch is used as an abstraction in various examples.;
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
-#A 1000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
-#A 2000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
-#X coords 0 1 2047 -1 200 140 1 0 0;
+#A 1000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 1023 -1 200 140 1 0 0;
 #X restore 512 93 graph;
 #X obj 506 760 dac~;
 #X text 728 98 Tamanho de bloco, f 9;
-#X text 299 446 ADSR;
+#X text 266 444 ADSR;
 #X connect 2 0 4 0;
 #X connect 3 0 4 0;
 #X connect 4 0 9 0;
