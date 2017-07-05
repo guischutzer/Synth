@@ -1,7 +1,7 @@
-#N canvas 61 53 1305 715 10;
-#N canvas 543 236 944 686 sintese 0;
+#N canvas 58 94 1305 715 10;
+#N canvas 540 250 944 686 sintese 0;
 #X obj 101 101 cnv 15 498 398 empty empty Síntese 5 12 0 14 -262130
--66577 0;
+-86853 0;
 #N canvas 456 202 736 792 VCO 0;
 #X obj 101 101 cnv 15 98 168 empty vco_b empty 20 12 0 14 -260818 -262144
 0;
@@ -2379,9 +2379,9 @@ them in a wavetable for use later.;
 #X connect 14 1 16 0;
 #X coords 0 -1 1 1 500 400 2 100 100;
 #X restore 178 6 pd sintese;
-#N canvas 1 65 1905 986 controle 0;
+#N canvas 0 94 1920 986 controle 0;
 #X obj 101 101 cnv 15 498 198 empty empty Controle 5 12 0 14 -204800
--66577 0;
+-16662 0;
 #N canvas 830 309 576 646 Abre_MIDI 0;
 #X obj 82 2 bng 15 250 50 0 empty empty empty 17 7 0 10 -4034 -1 -1
 ;
@@ -2497,9 +2497,9 @@ them in a wavetable for use later.;
 #X connect 18 0 19 0;
 #X coords 0 -1 1 1 500 200 2 100 100;
 #X restore 178 -214 pd controle;
-#N canvas 872 284 892 449 envelopamento 0;
+#N canvas 869 298 892 449 envelopamento 0;
 #X obj 101 101 cnv 15 498 198 empty envelopamento Envelopamento 5 12
-0 14 -261228 -262144 0;
+0 14 -261228 -86277 0;
 #N canvas 245 247 1389 657 env_selector 0;
 #X obj 100 101 hradio 15 1 0 2 empty empty empty 0 -8 0 10 -261234
 -258113 -1 0;
@@ -2836,9 +2836,9 @@ This patch is used as an abstraction in various examples.;
 #X connect 21 0 17 1;
 #X coords 0 -1 1 1 500 200 2 100 100;
 #X restore 173 438 pd envelopamento;
-#N canvas 209 106 1062 618 efeitos 1;
-#X obj 101 101 cnv 15 498 198 empty empty Efeitos 5 12 0 14 -232576
--66577 0;
+#N canvas 200 148 1062 618 efeitos 0;
+#X obj 101 101 cnv 15 498 398 empty empty Efeitos 5 12 0 14 -232576
+-45076 0;
 #X obj 28 122 inlet~;
 #N canvas 45 179 1144 639 post_processing 0;
 #X obj 116 68 inlet~;
@@ -2882,7 +2882,7 @@ This patch is used as an abstraction in various examples.;
 #X restore 475 513 pd post_processing;
 #X obj 474 554 dac~;
 #X obj 598 65 inlet;
-#N canvas 1 54 1905 997 toggle_fx 0;
+#N canvas 0 94 1920 986 toggle_fx 0;
 #X obj 101 101 tgl 15 0 empty fx_tog1 empty 17 7 0 10 -257472 -45076
 -262144 0 1;
 #X obj 117 101 tgl 15 0 empty fx_tog2 empty 17 7 0 10 -257472 -45076
@@ -2909,7 +2909,6 @@ This patch is used as an abstraction in various examples.;
 #X obj 198 491 sel 1;
 #X obj 110 491 sel 0;
 #X floatatom 156 457 5 0 0 0 - - -, f 5;
-#X msg 110 513 \; fx3 color 39;
 #X obj 520 439 sel 1;
 #X obj 432 439 sel 0;
 #X floatatom 478 405 5 0 0 0 - - -, f 5;
@@ -2918,45 +2917,48 @@ This patch is used as an abstraction in various examples.;
 #X obj 72 455 s fx3_gate;
 #X obj 393 406 s fx4_gate;
 #X msg 52 240 \; fx1 color 39 \; fir_b color 39;
-#X msg 108 570 \; fx3 color 19;
 #X msg 50 282 \; fx1 color 19 \; fir_b color 19;
 #X msg 432 515 \; fx4 color 19;
 #X obj 301 161 s phaser_gate;
-#X msg 750 80 \; fx_tog1 color 39 \; fx_tog2 color 39 \; fx_tog3 color
-39 \; fx_tog4 color 39 \; fx1 color 39 \; fx2 color 39 \; fx3 color
-39 \; fx4 color 39 \; fir_b color 39 \; phaser_b color 39;
 #X msg 345 242 \; fx2 color 39 \; phaser_b color 39;
 #X msg 345 298 \; fx2 color 19 \; phaser_b color 19;
 #X msg 248 97 0;
 #X obj 204 72 loadbang;
+#X msg 110 513 \; fx3 color 39 \; wah_b color 39;
+#X msg 108 570 \; fx3 color 19 \; wah_b color 19;
+#X msg 750 80 \; fx_tog1 color 39 \; fx_tog2 color 39 \; fx_tog3 color
+39 \; fx_tog4 color 39 \; fx1 color 39 \; fx2 color 39 \; fx3 color
+39 \; fx4 color 39 \; fir_b color 39 \; phaser_b color 39 \; wah_b
+color 39;
 #X connect 0 0 14 0;
 #X connect 1 0 11 0;
 #X connect 2 0 17 0;
-#X connect 3 0 21 0;
-#X connect 8 0 33 0;
-#X connect 9 0 31 0;
-#X connect 10 0 32 0;
+#X connect 3 0 20 0;
+#X connect 8 0 30 0;
+#X connect 9 0 35 0;
+#X connect 10 0 29 0;
 #X connect 11 0 10 0;
 #X connect 11 0 8 0;
-#X connect 11 0 30 0;
-#X connect 12 0 28 0;
-#X connect 13 0 26 0;
+#X connect 11 0 28 0;
+#X connect 12 0 26 0;
+#X connect 13 0 25 0;
 #X connect 14 0 13 0;
 #X connect 14 0 12 0;
-#X connect 14 0 23 0;
-#X connect 15 0 27 0;
-#X connect 16 0 18 0;
+#X connect 14 0 22 0;
+#X connect 15 0 34 0;
+#X connect 16 0 33 0;
 #X connect 17 0 16 0;
 #X connect 17 0 15 0;
-#X connect 19 0 29 0;
-#X connect 20 0 22 0;
-#X connect 21 0 20 0;
-#X connect 21 0 19 0;
-#X connect 34 0 14 0;
-#X connect 34 0 11 0;
-#X connect 34 0 17 0;
-#X connect 34 0 21 0;
-#X connect 35 0 34 0;
+#X connect 17 0 23 0;
+#X connect 18 0 27 0;
+#X connect 19 0 21 0;
+#X connect 20 0 19 0;
+#X connect 20 0 18 0;
+#X connect 31 0 14 0;
+#X connect 31 0 11 0;
+#X connect 31 0 17 0;
+#X connect 31 0 20 0;
+#X connect 32 0 31 0;
 #X coords 0 -1 1 1 65 17 2 100 100;
 #X restore 168 104 pd toggle_fx;
 #N canvas 492 273 874 495 fir 0;
@@ -3074,11 +3076,11 @@ This patch is used as an abstraction in various examples.;
 #X obj 495 40 inlet~;
 #X obj 678 173 *~;
 #X obj 257 139 flatgui/knob 32 32 0 127 0 0 empty empty empty 0 -8
-0 8 1.50384e+07 0 1.50385e+07 928 1;
+0 8 1.85515e+07 0 1.85515e+07 928 1;
 #X text 107 133 Ampl.;
 #X text 213 132 Freq.;
 #X obj 163 138 flatgui/knob 32 32 0 127 0 0 empty empty empty 0 -8
-0 8 1.50384e+07 0 1.50385e+07 0 1;
+0 8 1.85515e+07 0 1.85515e+07 0 1;
 #X obj 163 213 / 127;
 #X obj 163 235 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 0 256;
@@ -3147,7 +3149,9 @@ This patch is used as an abstraction in various examples.;
 #X coords 0 -1 1 1 200 80 2 200 200;
 #X restore 348 155 pd phaser;
 #X text 360 130 Phaser;
-#N canvas 213 111 907 617 (subpatch) 1;
+#N canvas 569 206 907 617 (subpatch) 0;
+#X obj 1 1 cnv 15 198 138 empty wah_b empty 20 12 0 14 -257472 -66577
+0;
 #X obj 90 514 vcf~;
 #X obj 90 25 adc~;
 #X obj 89 555 dac~;
@@ -3180,7 +3184,6 @@ This patch is used as an abstraction in various examples.;
 #X obj 559 21 env~;
 #X text 129 557 Implementation inspired in auto-wah implementation
 from Pierre Massat \, GuitarExtended \, 2012.s, f 94;
-#X obj 145 191 multiplex~;
 #X obj 15 46 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 15 73 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
@@ -3193,41 +3196,42 @@ from Pierre Massat \, GuitarExtended \, 2012.s, f 94;
 #X obj 295 172 spigot 1;
 #X obj 3 149 sel 1;
 #X obj 47 149 sel 1;
-#X connect 0 0 2 1;
-#X connect 0 0 2 0;
-#X connect 1 0 0 0;
-#X connect 1 0 25 0;
-#X connect 4 0 3 0;
-#X connect 4 0 0 2;
-#X connect 5 0 6 0;
-#X connect 6 0 27 1;
-#X connect 7 0 5 0;
-#X connect 8 0 12 0;
-#X connect 9 0 10 0;
-#X connect 9 0 12 1;
+#X obj 145 191 zexy/multiplex~;
+#X connect 1 0 3 1;
+#X connect 1 0 3 0;
+#X connect 2 0 1 0;
+#X connect 2 0 26 0;
+#X connect 5 0 4 0;
+#X connect 5 0 1 2;
+#X connect 6 0 7 0;
+#X connect 7 0 38 1;
+#X connect 8 0 6 0;
 #X connect 9 0 13 0;
-#X connect 9 0 14 1;
-#X connect 12 0 11 0;
-#X connect 12 0 15 1;
+#X connect 10 0 11 0;
+#X connect 10 0 13 1;
+#X connect 10 0 14 0;
+#X connect 10 0 15 1;
 #X connect 13 0 12 0;
-#X connect 14 0 0 1;
-#X connect 15 0 14 0;
-#X connect 21 0 7 0;
-#X connect 22 0 23 0;
-#X connect 23 0 4 0;
-#X connect 24 0 0 0;
-#X connect 24 0 25 0;
-#X connect 25 0 27 0;
-#X connect 27 0 15 0;
+#X connect 13 0 16 1;
+#X connect 14 0 13 0;
+#X connect 15 0 1 1;
+#X connect 16 0 15 0;
+#X connect 22 0 8 0;
+#X connect 23 0 24 0;
+#X connect 24 0 5 0;
+#X connect 25 0 1 0;
+#X connect 25 0 26 0;
+#X connect 26 0 38 0;
 #X connect 28 0 36 0;
 #X connect 29 0 37 0;
-#X connect 32 0 27 0;
 #X connect 32 0 29 0;
-#X connect 33 0 27 0;
+#X connect 32 0 38 0;
+#X connect 33 0 38 0;
 #X connect 34 0 28 0;
 #X connect 36 0 32 0;
 #X connect 37 0 33 0;
 #X connect 37 0 34 0;
+#X connect 38 0 16 0;
 #X coords 0 1 100 -1 200 140 2 0 0;
 #X restore 117 322 graph;
 #X connect 1 0 6 0;
