@@ -1,6 +1,6 @@
-#N canvas 277 211 1381 735 10;
-#N canvas 545 235 944 686 sintese 0;
-#X obj 100 100 cnv 15 500 400 empty empty Síntese 5 12 0 14 -262130
+#N canvas 275 212 1381 735 10;
+#N canvas 543 236 944 686 sintese 0;
+#X obj 101 101 cnv 15 498 398 empty empty Síntese 5 12 0 14 -262130
 -66577 0;
 #N canvas 456 202 736 792 VCO 0;
 #X obj 101 101 cnv 15 98 168 empty vco_b empty 20 12 0 14 -260818 -262144
@@ -2379,8 +2379,8 @@ them in a wavetable for use later.;
 #X connect 14 1 16 0;
 #X coords 0 -1 1 1 500 400 2 100 100;
 #X restore 178 26 pd sintese;
-#N canvas 0 94 1920 986 controle 0;
-#X obj 100 100 cnv 15 500 200 empty empty Controle 5 12 0 14 -204800
+#N canvas 1 65 1905 986 controle 0;
+#X obj 101 101 cnv 15 498 198 empty empty Controle 5 12 0 14 -204800
 -66577 0;
 #N canvas 830 309 576 646 Abre_MIDI 0;
 #X obj 82 2 bng 15 250 50 0 empty empty empty 17 7 0 10 -4034 -1 -1
@@ -2500,8 +2500,8 @@ them in a wavetable for use later.;
 #X connect 18 0 19 0;
 #X coords 0 -1 1 1 500 200 2 100 100;
 #X restore 178 -194 pd controle;
-#N canvas 874 283 892 449 envelopamento 0;
-#X obj 100 100 cnv 15 500 200 empty envelopamento Envelopamento 5 12
+#N canvas 872 284 892 449 envelopamento 0;
+#X obj 101 101 cnv 15 498 198 empty envelopamento Envelopamento 5 12
 0 14 -261228 -66577 0;
 #N canvas 245 247 1389 657 env_selector 0;
 #X obj 100 101 hradio 15 1 0 2 empty empty empty 0 -8 0 10 -261234
@@ -2839,8 +2839,8 @@ This patch is used as an abstraction in various examples.;
 #X connect 21 0 17 1;
 #X coords 0 -1 1 1 500 200 2 100 100;
 #X restore 173 458 pd envelopamento;
-#N canvas 529 358 1062 584 efeitos 0;
-#X obj 100 100 cnv 15 500 200 empty empty Efeitos 5 12 0 14 -232576
+#N canvas 527 359 1062 584 efeitos 0;
+#X obj 101 101 cnv 15 498 198 empty empty Efeitos 5 12 0 14 -232576
 -66577 0;
 #X obj 306 63 inlet~;
 #N canvas 45 179 1144 639 post_processing 0;
@@ -3077,11 +3077,11 @@ This patch is used as an abstraction in various examples.;
 #X obj 495 40 inlet~;
 #X obj 678 173 *~;
 #X obj 257 139 flatgui/knob 32 32 0 127 0 0 empty empty empty 0 -8
-0 8 2.92045e+07 0 2.84642e+07 928 1;
+0 8 1.50384e+07 0 1.50385e+07 928 1;
 #X text 107 133 Ampl.;
 #X text 213 132 Freq.;
 #X obj 163 138 flatgui/knob 32 32 0 127 0 0 empty empty empty 0 -8
-0 8 2.92045e+07 0 2.84642e+07 0 1;
+0 8 1.50384e+07 0 1.50385e+07 0 1;
 #X obj 163 213 / 127;
 #X obj 163 235 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 0 256;
