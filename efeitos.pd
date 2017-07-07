@@ -1,8 +1,8 @@
-#N canvas 61 81 1279 687 10;
+#N canvas 55 109 1279 687 10;
 #X obj 101 101 cnv 15 498 398 empty empty Efeitos 5 12 0 14 -232576
 -45076 0;
 #X obj 28 122 inlet~;
-#N canvas 45 179 1144 639 post_processing 0;
+#N canvas 42 193 1144 639 post_processing 0;
 #X obj 116 68 inlet~;
 #X obj 158 104 r volume;
 #X obj 120 133 *~;
@@ -20,10 +20,12 @@
 #X obj 33 418 bang~;
 #X obj 33 447 tabwrite~ onda;
 #X obj 136 439 outlet~;
-#X obj 230 329 inlet;
-#X obj 230 351 unpack;
-#X floatatom 261 384 5 0 0 0 - - -, f 5;
+#X obj 161 268 inlet;
+#X obj 161 290 unpack;
+#X floatatom 192 323 5 0 0 0 - - -, f 5;
 #X obj 137 409 *~;
+#X obj 279 325 != 0;
+#X obj 192 359 spigot;
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
 #X connect 2 0 15 0;
@@ -39,8 +41,11 @@
 #X connect 14 0 15 0;
 #X connect 17 0 18 0;
 #X connect 18 1 19 0;
-#X connect 19 0 20 1;
+#X connect 19 0 21 1;
+#X connect 19 0 22 0;
 #X connect 20 0 16 0;
+#X connect 21 0 22 1;
+#X connect 22 0 20 0;
 #X restore 475 513 pd post_processing;
 #X obj 474 554 dac~;
 #X obj 598 65 inlet;
@@ -238,11 +243,11 @@ color 39;
 #X obj 495 40 inlet~;
 #X obj 678 173 *~;
 #X obj 257 139 flatgui/knob 32 32 0 127 0 0 empty empty empty 0 -8
-0 8 2.87132e+07 0 2.81023e+07 928 1;
+0 8 3.05439e+07 0 3.05381e+07 928 1;
 #X text 107 133 Ampl.;
 #X text 213 132 Freq.;
 #X obj 163 138 flatgui/knob 32 32 0 127 0 0 empty empty empty 0 -8
-0 8 2.87132e+07 0 2.81023e+07 0 1;
+0 8 3.05439e+07 0 3.05381e+07 0 1;
 #X obj 163 213 / 127;
 #X obj 163 235 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 0 256;
@@ -311,7 +316,7 @@ color 39;
 #X coords 0 -1 1 1 200 80 2 200 200;
 #X restore 348 155 pd phaser;
 #X text 360 130 Phaser;
-#N canvas 456 127 907 617 (subpatch) 0;
+#N canvas 453 141 907 617 (subpatch) 0;
 #X obj 1 1 cnv 15 198 138 empty wah_b empty 20 12 0 14 -257472 -262144
 0;
 #X obj 96 503 vcf~;
@@ -346,7 +351,7 @@ color 39;
 from Pierre Massat \, GuitarExtended \, 2012.s, f 94;
 #X obj 15 70 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
-#X obj 15 97 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 15 97 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X text 37 70 usar envelope de amp.;
 #X text 37 96 usar LFO;
