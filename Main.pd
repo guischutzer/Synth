@@ -1,4 +1,4 @@
-#N canvas 0 94 1442 808 10;
+#N canvas 0 108 1442 808 10;
 #X obj 153 67 controle;
 #X obj 147 334 sintese;
 #X obj 798 131 envelopamento;
