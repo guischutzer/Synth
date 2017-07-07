@@ -1,4 +1,4 @@
-#N canvas 0 108 1442 808 10;
+#N canvas 314 176 1442 808 10;
 #X obj 153 67 controle;
 #X obj 153 332 sintese;
 #X obj 786 84 envelopamento;
@@ -8,14 +8,20 @@
 #X obj 152 743 s~ synth_env_sig;
 #X obj 399 742 s synth_env_pair;
 #X obj 786 58 r~ synth_env_sig;
-#X obj 1279 60 r synth_env_pair;
+#X obj 1032 58 r synth_env_pair;
 #X obj 786 289 s~ env_fx_sig;
 #X obj 1279 289 s env_fx_pair;
 #X obj 786 320 r~ env_fx_sig;
 #X obj 1279 320 r env_fx_pair;
+#X obj 646 743 s synth_env_bang;
+#X obj 646 272 s ctl_synth_bang;
+#X obj 646 308 r ctl_synth_bang;
+#X obj 1279 59 r synth_env_bang;
 #X connect 0 0 4 0;
+#X connect 0 1 15 0;
 #X connect 1 0 6 0;
 #X connect 1 1 7 0;
+#X connect 1 2 14 0;
 #X connect 2 0 10 0;
 #X connect 2 1 11 0;
 #X connect 5 0 1 0;
@@ -23,3 +29,5 @@
 #X connect 9 0 2 1;
 #X connect 12 0 3 0;
 #X connect 13 0 3 1;
+#X connect 16 0 1 1;
+#X connect 17 0 2 2;
