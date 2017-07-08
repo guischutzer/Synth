@@ -1,7 +1,7 @@
-#N canvas 1 242 1520 801 10;
+#N canvas 9 239 1520 801 10;
 #X obj 101 101 cnv 15 498 198 empty envelopamento Envelopamento 5 12
 0 14 -261228 -86277 0;
-#N canvas 243 248 1389 657 env_selector 1;
+#N canvas 243 248 1389 657 env_selector 0;
 #X obj 100 101 hradio 15 1 0 2 empty empty empty 0 -8 0 10 -261234
 -258113 -1 0;
 #X floatatom 659 477 5 0 0 0 - - -, f 5;
@@ -92,7 +92,7 @@
 #X connect 16 0 17 0;
 #X coords 0 -1 1 1 30 17 2 100 100;
 #X restore 215 105 pd env_selector;
-#N canvas 737 213 1063 771 adsr 0;
+#N canvas 741 237 1063 771 adsr 0;
 #X obj 101 101 cnv 15 258 148 empty adsr_b empty 20 12 0 14 -258699
 -262144 0;
 #X obj 140 380 r trigger;
@@ -100,9 +100,9 @@
 #X obj 152 624 outlet~;
 #X obj 105 127 cnv 15 120 90 empty empty empty 20 12 0 14 -262144 -66577
 0;
-#N canvas 1 57 450 300 (subpatch) 0;
-#X array adsr-format 44100 float 0;
-#X coords 0 1.02 44100 0 120 90 1 0 0;
+#N canvas 7 81 450 300 (subpatch) 0;
+#X array forma_adsr 44100 float 0;
+#X coords 0 1.02 44099 0 120 90 1 0 0;
 #X restore 105 127 graph;
 #X obj 593 342 r note_on;
 #X obj 151 572 *~;
@@ -110,7 +110,7 @@
 -1 -1;
 #X floatatom 157 411 5 0 0 0 - - -, f 5;
 #X obj 283 -11 loadbang;
-#N canvas 1 65 804 986 sub_adsr 0;
+#N canvas 4 59 804 985 sub_adsr 0;
 #X obj 105 111 inlet;
 #X obj 435 151 inlet;
 #X text 101 86 trigger;
@@ -216,7 +216,6 @@ This patch is used as an abstraction in various examples.;
 #X obj 718 350 r note_off;
 #X obj 718 406 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 167 509 tabwrite~ adsr-format;
 #X obj 266 117 vsl 15 110 0 1 0 0 decay empty D 0 -9 0 10 -203904 -1
 -1 1090 1;
 #X obj 246 233 nbx 3 14 0 4 0 0 empty empty empty 0 -8 0 10 -262144
@@ -227,13 +226,13 @@ This patch is used as an abstraction in various examples.;
 #X obj 338 117 vsl 15 110 0 1 0 0 release empty R 0 -9 0 10 -203904
 -1 -1 2180 1;
 #X obj 301 117 vsl 15 110 0 100 0 0 sustain empty S_% 0 -9 0 10 -204786
--1 -1 9810 1;
+-1 -1 10900 1;
 #X obj 322 233 nbx 3 14 0 4 0 0 empty empty empty 0 -8 0 10 -262144
 -1 -1 0.2 256;
 #X obj 208 233 nbx 3 14 0 4 0 0 empty empty empty 0 -8 0 10 -262144
 -1 -1 0.1 256;
 #X obj 284 233 nbx 3 14 0 100 0 0 empty empty empty 0 -8 0 10 -262144
--1 -1 90 256;
+-1 -1 100 256;
 #X obj 262 381 r att;
 #X obj 309 381 r decay;
 #X obj 448 383 r release;
@@ -248,36 +247,37 @@ This patch is used as an abstraction in various examples.;
 #X msg 338 42 0.2;
 #X msg 610 397 \; trigger 1 \; graphit bang;
 #X msg 749 388 \; trigger 0 graphit bang;
+#X obj 167 509 tabwrite~ forma_adsr;
 #X connect 1 0 11 0;
 #X connect 1 0 9 0;
-#X connect 2 0 14 0;
+#X connect 2 0 37 0;
 #X connect 6 0 8 0;
-#X connect 6 0 36 0;
+#X connect 6 0 35 0;
 #X connect 7 0 3 0;
+#X connect 10 0 32 0;
 #X connect 10 0 33 0;
+#X connect 10 0 26 0;
 #X connect 10 0 34 0;
-#X connect 10 0 27 0;
-#X connect 10 0 35 0;
 #X connect 11 0 7 0;
-#X connect 11 0 14 0;
+#X connect 11 0 37 0;
 #X connect 12 0 13 0;
-#X connect 12 0 37 0;
-#X connect 15 0 16 0;
-#X connect 17 0 11 4;
-#X connect 18 0 22 0;
-#X connect 19 0 21 0;
-#X connect 20 0 23 0;
-#X connect 24 0 11 2;
-#X connect 25 0 11 3;
-#X connect 26 0 11 5;
-#X connect 27 0 18 0;
+#X connect 12 0 36 0;
+#X connect 14 0 15 0;
+#X connect 16 0 11 4;
+#X connect 17 0 21 0;
+#X connect 18 0 20 0;
+#X connect 19 0 22 0;
+#X connect 23 0 11 2;
+#X connect 24 0 11 3;
+#X connect 25 0 11 5;
+#X connect 26 0 17 0;
+#X connect 27 0 28 0;
 #X connect 28 0 29 0;
-#X connect 29 0 30 0;
-#X connect 31 0 11 1;
-#X connect 32 0 7 1;
-#X connect 33 0 20 0;
-#X connect 34 0 15 0;
-#X connect 35 0 19 0;
+#X connect 30 0 11 1;
+#X connect 31 0 7 1;
+#X connect 32 0 19 0;
+#X connect 33 0 14 0;
+#X connect 34 0 18 0;
 #X coords 0 -1 1 1 260 150 1 100 100;
 #X restore 117 135 pd adsr;
 #X obj 242 45 inlet~;
@@ -304,11 +304,13 @@ This patch is used as an abstraction in various examples.;
 #X obj 950 57 inlet;
 #X text 212 79 Seletor de técnica;
 #X text 854 301 Computa eventos de note_on e note_off;
+#X msg 314 405 \; forma_adsr const 0;
 #X connect 1 0 2 0;
 #X connect 1 1 2 1;
 #X connect 2 0 4 0;
 #X connect 3 0 1 0;
 #X connect 5 0 6 0;
+#X connect 5 0 25 0;
 #X connect 7 0 8 0;
 #X connect 8 0 10 0;
 #X connect 8 1 10 1;
