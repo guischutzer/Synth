@@ -1,4 +1,4 @@
-#N canvas 26 247 1279 687 10;
+#N canvas 61 81 1279 687 10;
 #X obj 101 101 cnv 15 498 398 empty empty Efeitos 5 12 0 14 -232576
 -45076 0;
 #X obj 28 122 inlet~;
@@ -316,7 +316,7 @@ color 39;
 #X coords 0 -1 1 1 200 80 2 200 200;
 #X restore 348 155 pd phaser;
 #X text 360 130 Phaser;
-#N canvas 453 141 907 617 (subpatch) 0;
+#N canvas 211 115 907 617 (subpatch) 0;
 #X obj 1 1 cnv 15 198 138 empty wah_b empty 20 12 0 14 -257472 -262144
 0;
 #X obj 96 503 vcf~;
@@ -326,9 +326,9 @@ color 39;
 #X obj 218 102 +~ 1;
 #X obj 219 123 *~ 0.5;
 #X obj 217 81 osc~ 2;
-#X obj 412 197 hsl 128 15 700 6000 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 0 1;
-#X obj 385 296 hsl 128 15 0 700 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 69 38 hsl 128 15 700 6000 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 69 68 hsl 128 15 0 700 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X floatatom 382 315 6 0 0 0 - - -, f 6;
 #X floatatom 398 229 6 0 0 0 - - -, f 6;
@@ -341,20 +341,20 @@ color 39;
 #X text 518 293 <-- Minimum of the freq. range;
 #X text 167 437 <-- "Q";
 #X text 135 504 <-- Voltage-Controlled band-pass filter;
-#X obj 220 52 hsl 128 15 0.5 4 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 69 105 hsl 128 15 0.5 4 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 247 315 loadbang;
 #X msg 193 332 5.3;
-#X obj 95 4 inlet~;
+#X obj 234 6 inlet~;
 #X obj 565 21 env~;
 #X text 135 546 Implementation inspired in auto-wah implementation
 from Pierre Massat \, GuitarExtended \, 2012.s, f 94;
-#X obj 15 70 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 15 87 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
-#X obj 15 97 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X text 37 70 usar envelope de amp.;
-#X text 37 96 usar LFO;
+#X obj 15 122 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 37 87 usar envelope de amp.;
+#X text 37 121 usar LFO;
 #X msg 7 174 0;
 #X msg 51 174 1;
 #X msg 51 199 0;
@@ -362,12 +362,12 @@ from Pierre Massat \, GuitarExtended \, 2012.s, f 94;
 #X obj 51 149 sel 1;
 #X obj 151 191 zexy/multiplex~;
 #X obj 565 79 sig~;
-#X obj 46 28 hsl 100 15 0 1 0 0 empty empty empty -2 -8 0 10 -204800
+#X obj 46 6 hsl 100 15 0 1 0 0 empty empty empty -2 -8 0 10 -204800
 -258113 -1 0 1;
-#X text 123 27 wet;
-#X text 44 27 dry;
-#X obj 6 6 loadbang;
-#X msg 6 28 0;
+#X text 123 5 wet;
+#X text 44 5 dry;
+#X obj 324 3 loadbang;
+#X msg 324 28 0;
 #X obj 5 230 expr 1 - $f1;
 #X obj 78 572 outlet~;
 #X obj 96 526 *~;
@@ -375,6 +375,9 @@ from Pierre Massat \, GuitarExtended \, 2012.s, f 94;
 #X obj 78 550 +~;
 #X obj 800 114 inlet;
 #X obj 800 386 outlet;
+#X text 0 105 LFO freq.;
+#X text 8 22 max f. range;
+#X text 9 52 min f. range;
 #X connect 1 0 44 0;
 #X connect 3 0 2 0;
 #X connect 3 0 1 2;
