@@ -1,4 +1,4 @@
-#N canvas 61 81 1279 687 10;
+#N canvas 49 87 1279 687 10;
 #X obj 101 101 cnv 15 498 398 empty empty Efeitos 5 12 0 14 -232576
 -45076 0;
 #X obj 28 122 inlet~;
@@ -49,7 +49,7 @@
 #X restore 475 513 pd post_processing;
 #X obj 474 554 dac~;
 #X obj 598 65 inlet;
-#N canvas 0 94 1920 986 toggle_fx 0;
+#N canvas 1 65 1905 986 toggle_fx 0;
 #X obj 101 101 tgl 15 0 empty fx_tog1 empty 17 7 0 10 -257472 -45076
 -262144 0 1;
 #X obj 117 101 tgl 15 0 empty fx_tog2 empty 17 7 0 10 -257472 -45076
@@ -128,7 +128,7 @@ color 39;
 #X connect 32 0 31 0;
 #X coords 0 -1 1 1 65 17 2 100 100;
 #X restore 168 104 pd toggle_fx;
-#N canvas 489 249 874 495 fir 0;
+#N canvas 477 255 874 495 fir 0;
 #X obj 254 31 inlet~;
 #X obj 439 22 inlet;
 #X obj 256 289 outlet~;
@@ -136,7 +136,7 @@ color 39;
 #X obj 526 10 r fir_gate;
 #X obj 334 97 == 0;
 #X obj 394 45 *~;
-#N canvas 407 269 700 426 sub_fir 0;
+#N canvas 563 311 700 426 sub_fir 0;
 #X obj 421 42 inlet~;
 #X obj 598 37 inlet;
 #X obj 470 352 outlet~;
@@ -144,29 +144,15 @@ color 39;
 #X obj 101 101 cnv 15 198 138 empty fir_b empty 2 12 0 14 -257472 -262144
 0;
 #X obj 98 253 openpanel;
-#X obj 106 133 cnv 15 130 100 empty empty empty 20 12 0 14 -262144
+#X obj 106 133 cnv 15 150 100 empty empty empty 20 12 0 14 -262144
 -66577 0;
-#N canvas 1 54 450 250 (subpatch) 0;
-#X array fir_array 64 float 1;
-#A 0 0 0.2 0.2 0.219999 0.229999 0.239999 0.259999 0.279998 0.319997
-0.339997 0.329997 0.279998 0.259999 0.219999 0.219999 0.239999 0.249999
-0.259999 0.279998 0.299998 0.309997 0.319997 0.339997 0.339997 0.339997
-0.339997 0.279998 0.259999 0.219999 0.219999 0.233332 0.246665 0.259999
-0.279998 0.299998 0.319997 0.339997 0.339997 0.339997 0.339997 0.339997
-0.339997 0.319997 0.299998 0.279998 0.259999 0.219999 0.219999 0.219999
-0.219999 0.239999 0.229999 0.219999 0.18 0.18 0.170001 0.140001 0.120002
-0.140001 0.160001 0.379988 0.43332 0.486652 0.539984;
-#X coords 0 1 63 -1 130 100 1 0 0;
+#N canvas 1 56 450 250 (subpatch) 0;
+#X array fir_array 256 float 0;
+#X coords 0 1 255 -1 150 100 1 0 0;
 #X restore 106 133 graph;
-#X obj 241 187 bng 15 250 50 0 empty empty empty 17 7 0 10 -204800
+#X obj 261 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -204800
 -1 -1;
-#X text 239 170 Abrir;
-#X text 239 201 Salvar;
-#X obj 241 218 bng 15 250 50 0 empty empty empty 17 7 0 10 -204786
--1 -1;
-#X msg 98 298 \; fir_array read \$1;
-#X msg 236 296 \; fir_array write \$1;
-#X obj 236 258 savepanel;
+#X text 259 195 Abrir;
 #X obj 190 109 hsl 100 15 0 1 0 0 empty empty empty -2 -8 0 10 -204800
 -258113 -1 0 1;
 #X text 191 108 dry;
@@ -177,26 +163,36 @@ color 39;
 #X obj 397 283 +~;
 #X obj 181 45 loadbang;
 #X msg 179 71 0;
-#X obj 422 164 iemlib/FIR~ fir_array 64;
-#X connect 0 0 20 0;
-#X connect 0 0 24 0;
+#X obj 422 164 iemlib/FIR~ fir_array 256;
+#X msg 98 283 read -resize \$1 fir_array;
+#X obj 70 345 soundfiler;
+#X obj 293 321 loadbang;
+#X text 180 -11 dry-wet compõe o sinal com a porcentagem dry para
+o sinal original e a porcentagem wet para o sinal com o efeito (dry
+= 1 - wet);
+#X msg 182 354 read -resize filters/lp1.wav fir_array;
+#X connect 0 0 15 0;
+#X connect 0 0 19 0;
 #X connect 1 0 3 0;
-#X connect 5 0 12 0;
+#X connect 5 0 20 0;
 #X connect 8 0 5 0;
-#X connect 11 0 14 0;
-#X connect 14 0 13 0;
-#X connect 15 0 18 1;
-#X connect 15 0 19 0;
-#X connect 18 0 21 1;
-#X connect 19 0 20 1;
+#X connect 10 0 13 1;
+#X connect 10 0 14 0;
+#X connect 13 0 16 1;
+#X connect 14 0 15 1;
+#X connect 15 0 16 0;
+#X connect 16 0 2 0;
+#X connect 17 0 18 0;
+#X connect 18 0 10 0;
+#X connect 19 0 13 0;
 #X connect 20 0 21 0;
-#X connect 21 0 2 0;
-#X connect 22 0 23 0;
-#X connect 23 0 15 0;
-#X connect 24 0 18 0;
+#X connect 22 0 24 0;
+#X connect 24 0 21 0;
 #X coords 0 -1 1 1 200 137 1 100 100;
 #X restore 400 100 pd sub_fir;
 #X obj 560 73 spigot;
+#X text 622 20 Se o efeito não está selecionado \, manda o sinal
+sem alteração (análogo em todos os efeitos);
 #X connect 0 0 3 0;
 #X connect 0 0 6 0;
 #X connect 1 0 8 0;
@@ -210,14 +206,14 @@ color 39;
 #X connect 8 0 7 1;
 #X coords 0 -1 1 1 200 140 2 400 100;
 #X restore 120 138 pd fir;
-#N canvas 61 89 1135 679 phaser 0;
+#N canvas 711 88 1135 679 phaser 0;
 #X obj 88 121 inlet~;
 #X obj 397 129 inlet;
 #X obj 90 379 outlet~;
 #X obj 89 232 *~;
 #X obj 108 189 == 0;
 #X obj 226 156 *~;
-#N canvas 111 152 1023 533 sub_phaser 0;
+#N canvas 107 154 1023 533 sub_phaser 0;
 #X obj 540 486 outlet~;
 #X obj 101 101 cnv 15 198 78 empty phaser_b empty 2 12 0 14 -257472
 -262144 0;
@@ -243,11 +239,11 @@ color 39;
 #X obj 495 40 inlet~;
 #X obj 678 173 *~;
 #X obj 257 139 flatgui/knob 32 32 0 127 0 0 empty empty empty 0 -8
-0 8 2.7833e+07 0 2.7833e+07 928 1;
+0 8 3.58161e+07 0 3.53045e+07 928 1;
 #X text 107 133 Ampl.;
 #X text 213 132 Freq.;
 #X obj 163 138 flatgui/knob 32 32 0 127 0 0 empty empty empty 0 -8
-0 8 2.7833e+07 0 2.7833e+07 0 1;
+0 8 3.58161e+07 0 3.53045e+07 0 1;
 #X obj 163 213 / 127;
 #X obj 163 235 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 0 256;
@@ -262,6 +258,8 @@ color 39;
 #X obj 679 105 phasor~ 0.3;
 #X obj 256 235 * 20;
 #X obj 679 72 r sub_freq;
+#X text 634 15 Compõe o sinal que controla os parâmetros do phaser
+com a frequência e amplitude selecionadas;
 #X connect 5 0 8 1;
 #X connect 6 0 7 1;
 #X connect 7 0 8 0;
@@ -315,7 +313,7 @@ color 39;
 #X connect 7 0 4 0;
 #X coords 0 -1 1 1 200 80 2 200 200;
 #X restore 348 155 pd phaser;
-#X text 360 130 Phaser;
+#X text 347 136 Phaser;
 #N canvas 211 115 907 617 (subpatch) 0;
 #X obj 1 1 cnv 15 198 138 empty wah_b empty 20 12 0 14 -257472 -262144
 0;
@@ -423,6 +421,8 @@ from Pierre Massat \, GuitarExtended \, 2012.s, f 94;
 #X connect 47 0 48 0;
 #X coords 0 1 100 -1 200 140 2 0 0;
 #X restore 117 322 graph;
+#X text 166 80 Seletor de técnica (admite multiplicidade);
+#X text 602 514 Plota sinal final levando em conta o volume;
 #X connect 1 0 6 0;
 #X connect 2 0 3 0;
 #X connect 2 0 3 1;
